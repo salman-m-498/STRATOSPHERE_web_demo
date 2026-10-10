@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stratosphere — Elevate Beyond Gaming</title>
+  <meta name="description" content="Premium social gaming lounge. Book pool tables, PS5 bays, car sims and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/png" href="media/logo-512.png">
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <nav class="mobile-nav" id="mobile-nav"></nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__bg">
+      <video autoplay muted loop playsinline poster="media/logo.png">
+        <source src="media/hero-reel.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <span class="chip chip--gold mb-2">Premium social gaming lounge</span>
+      <h1 class="hero__title">Elevate<br><span class="accent">beyond</span><br><span class="accent-cyan">gaming</span></h1>
+      <p class="hero__sub">Designer pool tables, PS5 arenas and racing sim rigs in a lounge built for players. Book your session in seconds.</p>
+      <div class="hero__cta">
+        <a href="booking.html" class="btn btn--gold btn--lg">Book a Session</a>
+        <a href="booking.html#games" class="btn btn--outline btn--lg">View Games</a>
+      </div>
+      <div class="hero__chips">
+        <span class="chip chip--cyan">◆ esports-ready</span>
+        <span class="chip chip--cyan">◆ community-driven</span>
+        <span class="chip chip--cyan">◆ members club</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUICK BOOKING ============ -->
+  <section class="booking-panel">
+    <div class="container">
+      <form class="card" id="quick-book">
+        <div class="bp-grid">
+          <div class="bp-field">
+            <label for="qb-activity">Activity</label>
+            <select id="qb-activity" required>
+              <option value="pool">Pool Table</option>
+              <option value="snooker">Mini Snooker</option>
+              <option value="ps5">PS5 Arena</option>
+              <option value="sim">Car Simulator</option>
+              <option value="shuffleboard">Shuffleboard</option>
+              <option value="foosball">Foosball</option>
+            </select>
+          </div>
+          <div class="bp-field">
+            <label for="qb-location">Location</label>
+            <select id="qb-location">
+              <option>The Promenade — Level 2</option>
+              <option>Downtown Flagship</option>
+            </select>
+          </div>
+          <div class="bp-field">
+            <label for="qb-date">Date</label>
+            <input type="date" id="qb-date" required>
+          </div>
+          <div class="bp-field">
+            <label for="qb-time">Time</label>
+            <input type="time" id="qb-time" required>
+          </div>
+          <div class="bp-field">
+            <label for="qb-duration">Duration</label>
+            <select id="qb-duration">
+              <option>1 hour</option>
+              <option>1.5 hours</option>
+              <option>2 hours</option>
+              <option>3 hours</option>
+            </select>
+          </div>
+          <div class="bp-submit">
+            <button type="submit" class="btn btn--gold btn--block">Reserve Now</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE HIGHLIGHTS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">The lineup</span>
+        <h2>Pick your arena</h2>
+        <p class="lead">Six signature experiences under one roof. Every station is maintained, member-priced and bookable from your phone.</p>
+      </div>
+      <div class="grid grid--3" id="game-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ WHY STRATOSPHERE ============ -->
+  <section class="section" style="background:linear-gradient(180deg, transparent, rgba(11,47,93,0.18), transparent);">
+    <div class="container feature-row">
+      <div>
+        <span class="eyebrow">Why Stratosphere</span>
+        <h2>Not an arcade.<br>Your club.</h2>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-item__num">01</div>
+            <div><h3>Premium environment</h3><p>Moody lighting, designer tables and a lounge you'll actually want to hang in.</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item__num">02</div>
+            <div><h3>Curated social gaming</h3><p>Play your way — solo, with a squad, or matched with the community.</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item__num">03</div>
+            <div><h3>Community-first culture</h3><p>Weekly tournaments, player-finder boards and a crew that shows up.</p></div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item__num">04</div>
+            <div><h3>Rewards that stack</h3><p>Earn points every visit. Climb from Cadet to Astronaut and unlock real perks.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-media">
+        <video autoplay muted loop playsinline>
+          <source src="media/community-reel.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STAT BAND ============ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="stat-band">
+        <div><div class="stat__num">24+</div><div class="stat__label">Games & stations</div></div>
+        <div><div class="stat__num">3,800</div><div class="stat__label">Community members</div></div>
+        <div><div class="stat__num">120</div><div class="stat__label">Tournaments hosted</div></div>
+        <div><div class="stat__num">4.9★</div><div class="stat__label">Member rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Community</span>
+        <h2>What players say</h2>
+      </div>
+      <div class="grid grid--3" id="quote-grid"></div>
+    </div>
+  </section>
+
+  <!-- ============ LOYALTY TEASER ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Rewards</span>
+        <h2>Climb the ranks</h2>
+        <p class="lead">Every session earns points. Rise from Cadet to Astronaut and unlock priority booking, bonus points and private invites.</p>
+      </div>
+      <div class="grid grid--3" id="tier-grid"></div>
+      <div class="center mt-4">
+        <a href="rewards.html" class="btn btn--outline">Explore rewards</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOURNAMENT TEASER ============ -->
+  <section class="section" id="tournaments">
+    <div class="container">
+      <div class="flex-between wrap mb-3">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="eyebrow">Compete</span>
+          <h2>Upcoming tournaments</h2>
+        </div>
+        <a href="tournaments.html" class="btn btn--ghost">View all</a>
+      </div>
+      <div class="grid grid--3" id="tournament-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const A = window.STRATOSPHERE;
+
+      // Game grid
+      document.getElementById("game-grid").innerHTML = A.activities.map(a => `
+        <div class="game-card card--hover reveal is-visible">
+          <div class="game-card__icon">${window.ICON(a.icon)}</div>
+          <h3>${a.name}</h3>
+          <p>Bookable by the ${a.unit}. Members save on every session.</p>
+          <div class="game-card__price">
+            <strong>$${a.memberPrice}</strong><span>/ ${a.unit} · member</span>
+            <span style="margin-left:auto;">$${a.price} guest</span>
+          </div>
+          <a href="booking.html?activity=${a.id}" class="btn btn--ghost btn--sm btn--block mt-2">Book now</a>
+        </div>`).join("");
+
+      // Quotes
+      document.getElementById("quote-grid").innerHTML = A.testimonials.map(t => `
+        <div class="card quote-card card--hover reveal is-visible">
+          <div class="stars">${"★".repeat(t.rating)}</div>
+          <p>"${t.text}"</p>
+          <div class="who">
+            <div class="avatar">${t.name[0]}</div>
+            <div><strong>${t.name}</strong><span>${t.role}</span></div>
+          </div>
+        </div>`).join("");
+
+      // Tiers
+      document.getElementById("tier-grid").innerHTML = A.tiers.map((t, i) => `
+        <div class="card tier-card ${i === 1 ? "tier-card--featured" : ""} reveal is-visible">
+          ${i === 1 ? '<div class="tier-card__badge">Popular</div>' : ""}
+          <span class="chip ${i === 0 ? "chip--cyan" : i === 1 ? "chip--gold" : "chip--cyan"}">${i === 0 ? "Start here" : i === 1 ? "Most popular" : "Top tier"}</span>
+          <h3 class="tier__name mt-2">${t.name}</h3>
+          <div class="tier__pts">${t.pts}</div>
+          <ul>${t.perks.map(p => `<li>${p}</li>`).join("")}</ul>
+        </div>`).join("");
+
+      // Tournaments
+      document.getElementById("tournament-grid").innerHTML = A.tournaments.slice(0, 3).map(t => `
+        <div class="card card--hover reveal is-visible">
+          <div class="flex-between">
+            <span class="chip chip--cyan">${t.game}</span>
+            ${t.featured ? '<span class="chip chip--gold">Featured</span>' : ""}
+          </div>
+          <h3 class="mt-2">${t.name}</h3>
+          <p>${t.date} · ${t.time}</p>
+          <div class="flex-between">
+            <span class="muted">Prize <strong class="gold-text">${t.prize}</strong></span>
+            <span class="muted">${t.spots} spots</span>
+          </div>
+          <a href="tournaments.html" class="btn btn--outline btn--sm btn--block mt-2">View details</a>
+        </div>`).join("");
+
+      // Quick booking -> redirect with query params
+      document.getElementById("quick-book").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const a = document.getElementById("qb-activity").value;
+        const date = document.getElementById("qb-date").value;
+        const time = document.getElementById("qb-time").value;
+        const dur = document.getElementById("qb-duration").value;
+        location.href = `booking.html?activity=${a}&date=${date}&time=${time}&duration=${encodeURIComponent(dur)}`;
+      });
+
+      // Default date = today
+      const d = new Date().toISOString().split("T")[0];
+      document.getElementById("qb-date").value = d;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rewards — Stratosphere</title>
+  <meta name="description" content="Earn and redeem loyalty points at Stratosphere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/png" href="media/logo-512.png">
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <nav class="mobile-nav" id="mobile-nav"></nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Loyalty</span>
+        <h1>Rewards that stack</h1>
+        <p class="lead">Earn 1 point per $1. Climb from Cadet to Astronaut and turn every visit into free hours, priority booking and private invites.</p>
+      </div>
+
+      <!-- Points tracker -->
+      <div class="card mb-3" id="points-tracker"></div>
+
+      <!-- Tiers -->
+      <div class="grid grid--3 mt-3" id="tier-grid"></div>
+
+      <!-- Redemption examples -->
+      <div class="section-head mt-4">
+        <span class="eyebrow">Redeem</span>
+        <h2>What your points unlock</h2>
+      </div>
+      <div class="grid grid--3" id="redeem-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const A = window.STRATOSPHERE;
+      const user = window.Auth.getUser();
+      const pts = user ? user.points : 1240;
+
+      document.getElementById("points-tracker").innerHTML = `
+        <div class="flex-between wrap">
+          <div>
+            <span class="muted">Current balance</span>
+            <div class="tier__pts" style="font-size:2.6rem;">${pts.toLocaleString()} pts</div>
+            <span class="chip chip--gold">${user ? user.tier : "Pilot"} tier</span>
+          </div>
+          <div style="min-width:200px;flex:1;max-width:360px;">
+            <span class="muted" style="font-size:.85rem;">Progress to Astronaut</span>
+            <div style="background:var(--navy-2);border-radius:999px;height:12px;margin:8px 0;overflow:hidden;">
+              <div style="width:${Math.min(100, pts / 50)}%;height:100%;background:linear-gradient(90deg,var(--gold),var(--bronze));border-radius:999px;"></div>
+            </div>
+            <span class="muted" style="font-size:.8rem;">${(5000 - pts).toLocaleString()} pts to go</span>
+          </div>
+        </div>`;
+
+      document.getElementById("tier-grid").innerHTML = A.tiers.map((t, i) => `
+        <div class="card tier-card ${i === 1 ? "tier-card--featured" : ""}">
+          ${i === 1 ? '<div class="tier-card__badge">Popular</div>' : ""}
+          <span class="chip ${i === 2 ? "chip--gold" : "chip--cyan"}">Tier ${i + 1}</span>
+          <h3 class="tier__name mt-2">${t.name}</h3>
+          <div class="tier__pts">${t.pts}</div>
+          <ul>${t.perks.map(p => `<li>${p}</li>`).join("")}</ul>
+          <button class="btn ${i === 1 ? "btn--gold" : "btn--outline"} btn--block">${i === 1 ? "Join Pilot" : "View benefits"}</button>
+        </div>`).join("");
+
+      const redeems = [
+        { icon: "pool", title: "Free pool hour", cost: "500 pts", note: "Any table, any time" },
+        { icon: "sim", title: "Car sim session", cost: "800 pts", note: "Full racing rig" },
+        { icon: "drink", title: "Drink + snack combo", cost: "250 pts", note: "At the bar" },
+        { icon: "ticket", title: "Tournament entry", cost: "600 pts", note: "Any standard event" },
+        { icon: "group", title: "Bring a friend", cost: "900 pts", note: "Guest plays free" },
+        { icon: "star", title: "VIP lounge pass", cost: "1,500 pts", note: "One full evening" },
+      ];
+      document.getElementById("redeem-grid").innerHTML = redeems.map(r => `
+        <div class="card card--hover">
+          <div class="game-card__icon" style="margin-bottom:12px;">${window.ICON(r.icon)}</div>
+          <h3 class="mt-2">${r.title}</h3>
+          <p>${r.note}</p>
+          <div class="flex-between">
+            <strong class="gold-text">${r.cost}</strong>
+            <button class="btn btn--ghost btn--sm">Redeem</button>
+          </div>
+        </div>`).join("");
+    });
+  </script>
+</body>
+</html>

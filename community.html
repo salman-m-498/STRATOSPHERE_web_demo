@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community — Stratosphere</title>
+  <meta name="description" content="Find players and see what's happening at Stratosphere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/png" href="media/logo-512.png">
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <nav class="mobile-nav" id="mobile-nav"></nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Community</span>
+        <h1>Find your next squad</h1>
+        <p class="lead">Post a looking-for-group, match with players at your level and keep up with the lounge.</p>
+      </div>
+
+      <!-- Vibe filter -->
+      <div class="flex wrap gap-1 mb-3" id="vibe-filter">
+        <button class="chip chip--gold" data-vibe="all">All</button>
+        <button class="chip chip--cyan" data-vibe="casual">Casual</button>
+        <button class="chip chip--cyan" data-vibe="competitive">Competitive</button>
+        <button class="chip chip--cyan" data-vibe="beginner">Beginner friendly</button>
+      </div>
+
+      <div class="grid grid--3 mb-4" id="player-grid"></div>
+
+      <!-- Feed -->
+      <div class="section-head mt-3">
+        <span class="eyebrow">The feed</span>
+        <h2>Inside the lounge</h2>
+      </div>
+      <div class="feed-grid" id="feed-grid"></div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const A = window.STRATOSPHERE;
+      const skillMap = { "Competitive": "chip--cyan", "Intermediate": "chip--gold", "Elite": "chip--gold", "Beginner": "chip--green" };
+
+      function renderPlayers(vibe) {
+        const list = vibe === "all" ? A.players : A.players.filter(p => p.vibe === vibe);
+        document.getElementById("player-grid").innerHTML = list.map(p => `
+          <div class="card player-card card--hover">
+            <div class="avatar">${p.name[0]}</div>
+            <div class="meta">
+              <h3>${p.name}</h3>
+              <p>${p.games.join(" · ")}<br>${p.time}</p>
+              <div class="flex gap-1 wrap">
+                <span class="chip ${skillMap[p.skill] || "chip--cyan"}">${p.skill}</span>
+                <span class="chip">${p.vibe}</span>
+              </div>
+              <button class="btn btn--ghost btn--sm mt-2">Connect</button>
+            </div>
+          </div>`).join("");
+      }
+
+      document.getElementById("vibe-filter").querySelectorAll("[data-vibe]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#vibe-filter .chip").forEach(b => { b.className = "chip chip--cyan"; });
+          btn.className = "chip chip--gold";
+          renderPlayers(btn.dataset.vibe);
+        });
+      });
+
+      renderPlayers("all");
+
+      document.getElementById("feed-grid").innerHTML = `
+        <div class="feed-item">
+          <img src="media/community-01.webp" alt="Lounge interior" loading="lazy">
+          <div class="feed-item__body"><h4>Friday nights hit different</h4><p class="muted" style="font-size:.85rem;">The tables are filling up for 8-ball league. Come through.</p></div>
+        </div>
+        <div class="feed-item">
+          <video autoplay muted loop playsinline><source src="media/community-reel.mp4" type="video/mp4"></video>
+          <div class="feed-item__body"><h4>Car sim league is live</h4><p class="muted" style="font-size:.85rem;">Fastest lap of the week takes the sim crown.</p></div>
+        </div>
+        <div class="feed-item">
+          <img src="media/community-02.webp" alt="PS5 arena" loading="lazy">
+          <div class="feed-item__body"><h4>PS5 arena reopens</h4><p class="muted" style="font-size:.85rem;">New rigs, new seats, same unbeatable vibes.</p></div>
+        </div>
+        <div class="feed-item">
+          <div class="feed-item__body" style="padding:20px;">
+            <span class="chip chip--cyan">Announcement</span>
+            <h4 class="mt-2">Tournament week is coming</h4>
+            <p class="muted" style="font-size:.85rem;">Four events, one $1,400 prize pool. Entries open now.</p>
+            <a href="tournaments.html" class="btn btn--gold btn--sm btn--block">Enter now</a>
+          </div>
+        </div>`;
+    });
+  </script>
+</body>
+</html>

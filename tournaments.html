@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournaments — Stratosphere</title>
+  <meta name="description" content="Competitive events and tournaments at Stratosphere.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/png" href="media/logo-512.png">
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <nav class="mobile-nav" id="mobile-nav"></nav>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Compete</span>
+        <h1>Tournaments & challenges</h1>
+        <p class="lead">Weekly events across pool, PS5 and the sim rigs. Cash prizes, real bragging rights.</p>
+      </div>
+
+      <!-- Featured -->
+      <div class="card tier-card--featured mb-3" id="featured-event"></div>
+
+      <!-- Filters -->
+      <div class="flex wrap gap-1 mb-3" id="t-filter">
+        <button class="chip chip--gold" data-g="all">All</button>
+        <button class="chip chip--cyan" data-g="Pool">Pool</button>
+        <button class="chip chip--cyan" data-g="PS5">PS5</button>
+        <button class="chip chip--cyan" data-g="Car Sim">Car Sim</button>
+        <button class="chip chip--cyan" data-g="Snooker">Snooker</button>
+      </div>
+
+      <div class="grid grid--3 mb-4" id="event-grid"></div>
+
+      <div class="grid grid--2">
+        <!-- Bracket -->
+        <div class="card">
+          <h3 class="mb-2">This week's bracket</h3>
+          <p class="muted" style="font-size:.85rem;">FC 25 2v2 Clash — semifinals</p>
+          <div class="bracket mt-2">
+            <div class="bracket-row"><div class="bracket-match"><span>Team Nova</span><span class="winner">3</span></div><div class="bracket-vs">vs</div><div class="bracket-match"><span>Team Volt</span><span>1</span></div></div>
+            <div class="bracket-row"><div class="bracket-match"><span>Team Apex</span><span>2</span></div><div class="bracket-vs">vs</div><div class="bracket-match"><span>Team Drift</span><span class="winner">4</span></div></div>
+            <div class="bracket-row"><div class="bracket-match"><span>Team Nova</span><span>2</span></div><div class="bracket-vs">vs</div><div class="bracket-match"><span class="winner">Team Drift</span><span class="winner">4</span></div></div>
+          </div>
+          <div class="flex-between mt-3">
+            <span class="chip chip--gold">Final · Oct 21</span>
+            <span class="muted">Prize $400</span>
+          </div>
+        </div>
+
+        <!-- Registration form -->
+        <div class="card">
+          <h3 class="mb-2">Register your squad</h3>
+          <form id="reg-form">
+            <div class="form-group">
+              <label>Team name</label>
+              <input class="input" required placeholder="e.g. Team Nova">
+            </div>
+            <div class="form-group">
+              <label>Event</label>
+              <select class="input" id="reg-event"></select>
+            </div>
+            <div class="form-group">
+              <label>Players</label>
+              <input class="input" required placeholder="2 – 4 players" type="text">
+            </div>
+            <button type="submit" class="btn btn--gold btn--block">Submit entry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const A = window.STRATOSPHERE;
+      const featured = A.tournaments.find(t => t.featured);
+
+      document.getElementById("featured-event").innerHTML = `
+        <div class="flex-between wrap">
+          <div>
+            <span class="chip chip--gold">Featured event</span>
+            <h2 class="mt-2" style="font-size:2rem;">${featured.name}</h2>
+            <p class="lead">${featured.game} · ${featured.date} at ${featured.time}</p>
+            <div class="flex gap-2 wrap">
+              <span class="chip chip--cyan">Prize ${featured.prize}</span>
+              <span class="chip chip--cyan">${featured.spots} spots</span>
+              <span class="chip chip--cyan">Entry ${featured.fee}</span>
+            </div>
+          </div>
+          <button class="btn btn--gold btn--lg" id="featured-cta">Enter now</button>
+        </div>`;
+      document.getElementById("featured-cta").addEventListener("click", () => {
+        document.getElementById("reg-event").value = featured.name;
+        document.getElementById("reg-form").scrollIntoView({ behavior: "smooth" });
+      });
+
+      function renderEvents(g) {
+        const list = g === "all" ? A.tournaments : A.tournaments.filter(t => t.game === g);
+        document.getElementById("event-grid").innerHTML = list.map(t => `
+          <div class="card card--hover">
+            <div class="flex-between">
+              <span class="chip chip--cyan">${t.game}</span>
+              ${t.featured ? '<span class="chip chip--gold">Featured</span>' : ""}
+            </div>
+            <h3 class="mt-2">${t.name}</h3>
+            <p>${t.date} · ${t.time}</p>
+            <div class="flex-between mt-1">
+              <span class="muted">Prize <strong class="gold-text">${t.prize}</strong></span>
+              <span class="muted">${t.spots} spots</span>
+            </div>
+            <div class="flex-between mt-2">
+              <span class="chip chip--gold">Entry ${t.fee}</span>
+              <button class="btn btn--ghost btn--sm">Enter</button>
+            </div>
+          </div>`).join("");
+      }
+
+      document.getElementById("t-filter").querySelectorAll("[data-g]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#t-filter .chip").forEach(b => b.className = "chip chip--cyan");
+          btn.className = "chip chip--gold";
+          renderEvents(btn.dataset.g);
+        });
+      });
+      renderEvents("all");
+
+      document.getElementById("reg-event").innerHTML = A.tournaments.map(t => `<option>${t.name}</option>`).join("");
+      document.getElementById("reg-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const el = e.target;
+        el.innerHTML = '<div class="center"><div style="display:flex;justify-content:center;color:var(--green);margin-bottom:8px;">' + window.ICON("check", "icon-xl") + '</div><h3 class="mt-2">Entry received</h3><p class="lead">We\'ll confirm your spot by email. Good luck.</p><a href="index.html" class="btn btn--ghost">Back home</a></div>';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Stratosphere</title>
+  <meta name="description" content="Sign in or create your Stratosphere account.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" type="image/png" href="media/logo-512.png">
+</head>
+<body>
+  <header class="site-header" id="site-header"></header>
+  <nav class="mobile-nav" id="mobile-nav"></nav>
+
+  <section class="section">
+    <div class="container auth-wrap">
+      <div class="center mb-3">
+        <span class="eyebrow" style="justify-content:center;">Members</span>
+        <h1>Welcome back</h1>
+        <p class="lead">Sign in to book faster and track your rewards.</p>
+      </div>
+
+      <div class="card auth-card">
+        <div class="tabs">
+          <button class="active" data-tab="login">Login</button>
+          <button data-tab="signup">Sign up</button>
+        </div>
+
+        <!-- Login form -->
+        <form id="login-form" class="tab-panel" data-panel="login">
+          <div class="form-group">
+            <label for="login-email">Email or phone</label>
+            <input id="login-email" class="input" type="text" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="login-pass">Password</label>
+            <input id="login-pass" class="input" type="password" placeholder="••••••••" required>
+          </div>
+          <div class="flex-between mb-3">
+            <label class="muted" style="font-size:.85rem;"><input type="checkbox"> Remember me</label>
+            <a href="#" id="forgot-link" class="cyan-text" style="font-size:.85rem;">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn--gold btn--block">Login</button>
+        </form>
+
+        <!-- Signup form -->
+        <form id="signup-form" class="tab-panel" data-panel="signup" style="display:none;">
+          <div class="form-group">
+            <label for="su-first">First name</label>
+            <input id="su-first" class="input" type="text" required>
+          </div>
+          <div class="form-group">
+            <label for="su-email">Email</label>
+            <input id="su-email" class="input" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="su-pass">Password</label>
+            <input id="su-pass" class="input" type="password" placeholder="Min 8 characters" required>
+          </div>
+          <button type="submit" class="btn btn--gold btn--block">Create account</button>
+        </form>
+
+        <!-- Forgot password -->
+        <div id="forgot-panel" style="display:none;">
+          <h3 class="mb-1">Reset password</h3>
+          <p>Enter your email and we'll send a reset link.</p>
+          <div class="form-group">
+            <input id="forgot-email" class="input" type="email" placeholder="you@example.com">
+          </div>
+          <button id="forgot-submit" class="btn btn--gold btn--block">Send reset link</button>
+          <button id="forgot-back" class="btn btn--ghost btn--block mt-2">Back to login</button>
+        </div>
+
+        <div class="divider">OR CONTINUE WITH</div>
+        <div class="flex gap-2">
+          <button class="social-btn">Google</button>
+          <button class="social-btn">Apple</button>
+        </div>
+      </div>
+      <p class="center muted mt-3" style="font-size:.85rem;">Demo — any credentials will work.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabs = document.querySelectorAll(".tabs button");
+      const panels = document.querySelectorAll(".tab-panel");
+      const forgot = document.getElementById("forgot-panel");
+
+      function showPanel(name) {
+        panels.forEach(p => p.style.display = p.dataset.panel === name ? "" : "none");
+        forgot.style.display = "none";
+        tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === name));
+      }
+      tabs.forEach(t => t.addEventListener("click", () => showPanel(t.dataset.tab)));
+
+      document.getElementById("forgot-link").addEventListener("click", (e) => {
+        e.preventDefault();
+        panels.forEach(p => p.style.display = "none");
+        forgot.style.display = "";
+        tabs.forEach(t => t.classList.remove("active"));
+      });
+      document.getElementById("forgot-back").addEventListener("click", () => showPanel("login"));
+      document.getElementById("forgot-submit").addEventListener("click", () => {
+        forgot.innerHTML = '<h3>Check your inbox</h3><p class="green-text">A reset link is on its way.</p>';
+      });
+
+      function doLogin(name) {
+        window.Auth.setUser({ firstName: name, points: 1240, tier: "Pilot", email: "member@example.com" });
+        location.href = "account.html";
+      }
+
+      document.getElementById("login-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("login-email").value;
+        const first = email.split("@")[0] || "Member";
+        doLogin(first.charAt(0).toUpperCase() + first.slice(1));
+      });
+      document.getElementById("signup-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        doLogin(document.getElementById("su-first").value);
+      });
+    });
+  </script>
+</body>
+</html>
