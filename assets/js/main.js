@@ -26,9 +26,12 @@ function ICON(name, cls = "") {
 const STRATOSPHERE = {
   brand: "Stratosphere",
   tagline: "Elevate beyond gaming",
-  location: "The Promenade · Level 2",
-  phone: "+1 (555) 014-7799",
+  location: "Kacheripady, Ernakulam, Kochi",
+  address: "Kacheripady, Ernakulam, Kochi, Kerala",
+  phone: "+91 98950 00000",
   email: "hello@stratosphere.lounge",
+  hours: "Open daily · 12:00 – 1:00 AM",
+  offer: "Golden Hour — 35% off · weekdays 12–4 PM",
 
   activities: [
     { id: "pool", name: "Pool Table", icon: "pool", price: 22, memberPrice: 18, unit: "hr" },
@@ -45,10 +48,11 @@ const STRATOSPHERE = {
     { id: "astronaut", name: "Astronaut", pts: "5,000+", color: "gold", perks: ["Private tournament invites", "Complimentary VIP lounge access", "Personal game concierge", "4x points on everything"] },
   ],
 
-  testimonials: [
-    { name: "Marcus T.", role: "PS5 regular", text: "Booked a bay on my phone in 20 seconds. The vibe is unreal — feels like a members club, not an arcade.", rating: 5 },
-    { name: "Lena K.", role: "Car sim league", text: "The sim rigs are the best in the city. We run our whole league night here every Thursday.", rating: 5 },
-    { name: "Dev A.", role: "Pool night organiser", text: "Stratosphere is our go-to for crew nights. Tables are immaculate and the staff actually know the games.", rating: 5 },
+  facts: [
+    { k: "Location", v: "Kacheripady, Ernakulam, Kochi" },
+    { k: "Hours", v: "Daily · 12:00 – 1:00 AM" },
+    { k: "Arenas", v: "6 games · 12 stations" },
+    { k: "Bookings", v: "Reserve from your phone" },
   ],
 
   players: [
@@ -177,10 +181,10 @@ function renderFooter() {
         <div class="footer-col">
           <h4>Visit</h4>
           <ul>
-            <li>${d.location}</li>
+            <li>${d.address}</li>
             <li><a href="tel:${d.phone.replace(/[^+\d]/g, "")}">${d.phone}</a></li>
             <li><a href="mailto:${d.email}">${d.email}</a></li>
-            <li>Open daily · 12:00 – 1:00 AM</li>
+            <li>${d.hours}</li>
           </ul>
         </div>
       </div>
@@ -191,9 +195,9 @@ function renderFooter() {
     </div>`;
 }
 
-/* ---------- Reveal on scroll ---------- */
+/* ---------- Reveal on scroll (re-runnable, staggered via inline delay) ---------- */
 function initReveal() {
-  const els = document.querySelectorAll(".reveal");
+  const els = document.querySelectorAll(".reveal:not(.is-visible)");
   if (!("IntersectionObserver" in window)) {
     els.forEach((el) => el.classList.add("is-visible"));
     return;
@@ -205,8 +209,14 @@ function initReveal() {
         io.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
   els.forEach((el) => io.observe(el));
+}
+
+/* ---------- Reduced motion: pause autoplay media ---------- */
+function applyReducedMotion() {
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll("video[autoplay]").forEach((v) => { try { v.pause(); } catch (e) {} });
 }
 
 /* ---------- Init ---------- */
@@ -215,9 +225,11 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMobileNav();
   renderFooter();
   initReveal();
+  applyReducedMotion();
 });
 
 /* Expose for page scripts */
 window.STRATOSPHERE = STRATOSPHERE;
 window.Auth = Auth;
 window.ICON = ICON;
+window.initReveal = initReveal;

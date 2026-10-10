@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stratosphere — Elevate Beyond Gaming</title>
-  <meta name="description" content="Premium social gaming lounge. Book pool tables, PS5 bays, car sims and more.">
+  <meta name="description" content="Premium social gaming lounge in Kochi. Book pool tables, PS5 bays, car sims and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
@@ -15,6 +15,9 @@
   <header class="site-header" id="site-header"></header>
   <nav class="mobile-nav" id="mobile-nav"></nav>
 
+  <!-- Offer bar -->
+  <div class="offer-bar" id="offer-bar"></div>
+
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="hero__bg">
@@ -24,163 +27,113 @@
     </div>
     <div class="hero__overlay"></div>
     <div class="container hero__content">
-      <span class="chip chip--gold mb-2">Premium social gaming lounge</span>
+      <span class="chip chip--gold mb-2">Premium social gaming lounge · Kochi</span>
       <h1 class="hero__title">Elevate<br><span class="accent">beyond</span><br><span class="accent-cyan">gaming</span></h1>
-      <p class="hero__sub">Designer pool tables, PS5 arenas and racing sim rigs in a lounge built for players. Book your session in seconds.</p>
+      <p class="hero__sub">Book pool tables, PS5 bays and racing sims in seconds. A lounge built for players — in the heart of Ernakulam.</p>
       <div class="hero__cta">
-        <a href="booking.html" class="btn btn--gold btn--lg">Book a Session</a>
-        <a href="booking.html#games" class="btn btn--outline btn--lg">View Games</a>
+        <a href="#book" class="btn btn--gold btn--lg">Book a session</a>
+        <a href="#games" class="btn btn--outline btn--lg">View games</a>
       </div>
       <div class="hero__chips">
-        <span class="chip chip--cyan">◆ esports-ready</span>
-        <span class="chip chip--cyan">◆ community-driven</span>
-        <span class="chip chip--cyan">◆ members club</span>
+        <span class="chip chip--cyan">esports-ready</span>
+        <span class="chip chip--cyan">community-driven</span>
+        <span class="chip chip--cyan">members club</span>
       </div>
     </div>
   </section>
 
-  <!-- ============ QUICK BOOKING ============ -->
+  <!-- ============ QUICK BOOKING (floating) ============ -->
   <section class="booking-panel">
     <div class="container">
-      <form class="card" id="quick-book">
-        <div class="bp-grid">
-          <div class="bp-field">
-            <label for="qb-activity">Activity</label>
-            <select id="qb-activity" required>
-              <option value="pool">Pool Table</option>
-              <option value="snooker">Mini Snooker</option>
-              <option value="ps5">PS5 Arena</option>
-              <option value="sim">Car Simulator</option>
-              <option value="shuffleboard">Shuffleboard</option>
-              <option value="foosball">Foosball</option>
-            </select>
+      <div class="felt hero-book" id="book">
+        <form id="quick-book">
+          <div class="book-grid">
+            <div class="form-group">
+              <label for="qb-activity">Activity</label>
+              <select id="qb-activity" required>
+                <option value="pool">Pool Table</option>
+                <option value="snooker">Mini Snooker</option>
+                <option value="ps5">PS5 Arena</option>
+                <option value="sim">Car Simulator</option>
+                <option value="shuffleboard">Shuffleboard</option>
+                <option value="foosball">Foosball</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="qb-date">Date</label>
+              <input type="date" id="qb-date" required>
+            </div>
+            <div class="form-group">
+              <label for="qb-time">Time</label>
+              <input type="time" id="qb-time" required>
+            </div>
+            <div class="form-group">
+              <label for="qb-duration">Duration</label>
+              <select id="qb-duration">
+                <option>1 hour</option>
+                <option>1.5 hours</option>
+                <option>2 hours</option>
+                <option>3 hours</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn--gold btn--block">Reserve now</button>
           </div>
-          <div class="bp-field">
-            <label for="qb-location">Location</label>
-            <select id="qb-location">
-              <option>The Promenade — Level 2</option>
-              <option>Downtown Flagship</option>
-            </select>
-          </div>
-          <div class="bp-field">
-            <label for="qb-date">Date</label>
-            <input type="date" id="qb-date" required>
-          </div>
-          <div class="bp-field">
-            <label for="qb-time">Time</label>
-            <input type="time" id="qb-time" required>
-          </div>
-          <div class="bp-field">
-            <label for="qb-duration">Duration</label>
-            <select id="qb-duration">
-              <option>1 hour</option>
-              <option>1.5 hours</option>
-              <option>2 hours</option>
-              <option>3 hours</option>
-            </select>
-          </div>
-          <div class="bp-submit">
-            <button type="submit" class="btn btn--gold btn--block">Reserve Now</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </section>
 
-  <!-- ============ EXPERIENCE HIGHLIGHTS ============ -->
-  <section class="section">
+  <!-- ============ GAMES ============ -->
+  <section class="section" id="games">
     <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">The lineup</span>
+      <div class="section-head">
         <h2>Pick your arena</h2>
         <p class="lead">Six signature experiences under one roof. Every station is maintained, member-priced and bookable from your phone.</p>
       </div>
+
       <div class="grid grid--3" id="game-grid"></div>
     </div>
   </section>
 
   <!-- ============ WHY STRATOSPHERE ============ -->
-  <section class="section" style="background:linear-gradient(180deg, transparent, rgba(11,47,93,0.18), transparent);">
+  <section class="section section--line">
     <div class="container feature-row">
       <div>
-        <span class="eyebrow">Why Stratosphere</span>
-        <h2>Not an arcade.<br>Your club.</h2>
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-item__num">01</div>
-            <div><h3>Premium environment</h3><p>Moody lighting, designer tables and a lounge you'll actually want to hang in.</p></div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-item__num">02</div>
-            <div><h3>Curated social gaming</h3><p>Play your way — solo, with a squad, or matched with the community.</p></div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-item__num">03</div>
-            <div><h3>Community-first culture</h3><p>Weekly tournaments, player-finder boards and a crew that shows up.</p></div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-item__num">04</div>
-            <div><h3>Rewards that stack</h3><p>Earn points every visit. Climb from Cadet to Astronaut and unlock real perks.</p></div>
-          </div>
-        </div>
+        <h2 class="mb-2">Not an arcade. Your club.</h2>
+        <div class="feature-list" id="why-list"></div>
       </div>
-      <div class="feature-media">
-        <video autoplay muted loop playsinline>
-          <source src="media/community-reel.mp4" type="video/mp4">
-        </video>
+      <div class="feature-media photo photo--vignette">
+        <img src="media/snooker.png" alt="Stratosphere lounge interior">
       </div>
     </div>
   </section>
 
-  <!-- ============ STAT BAND ============ -->
+  <!-- ============ FACTS ============ -->
   <section class="section section--tight">
     <div class="container">
-      <div class="stat-band">
-        <div><div class="stat__num">24+</div><div class="stat__label">Games & stations</div></div>
-        <div><div class="stat__num">3,800</div><div class="stat__label">Community members</div></div>
-        <div><div class="stat__num">120</div><div class="stat__label">Tournaments hosted</div></div>
-        <div><div class="stat__num">4.9★</div><div class="stat__label">Member rating</div></div>
-      </div>
+      <div class="fact-band" id="fact-band"></div>
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
-  <section class="section">
+  <!-- ============ REWARDS TEASER ============ -->
+  <section class="section" id="rewards">
     <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Community</span>
-        <h2>What players say</h2>
-      </div>
-      <div class="grid grid--3" id="quote-grid"></div>
-    </div>
-  </section>
-
-  <!-- ============ LOYALTY TEASER ============ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow">Rewards</span>
+      <div class="flex-between wrap mb-2">
         <h2>Climb the ranks</h2>
-        <p class="lead">Every session earns points. Rise from Cadet to Astronaut and unlock priority booking, bonus points and private invites.</p>
+        <a href="rewards.html" class="btn btn--ghost btn--sm">All rewards</a>
       </div>
-      <div class="grid grid--3" id="tier-grid"></div>
-      <div class="center mt-4">
-        <a href="rewards.html" class="btn btn--outline">Explore rewards</a>
-      </div>
+      <div class="scroller" id="tier-scroller"></div>
     </div>
   </section>
 
-  <!-- ============ TOURNAMENT TEASER ============ -->
-  <section class="section" id="tournaments">
+  <!-- ============ TOURNAMENTS TEASER ============ -->
+  <section class="section section--line" id="tournaments">
     <div class="container">
-      <div class="flex-between wrap mb-3">
-        <div class="section-head" style="margin-bottom:0;">
-          <span class="eyebrow">Compete</span>
-          <h2>Upcoming tournaments</h2>
-        </div>
-        <a href="tournaments.html" class="btn btn--ghost">View all</a>
+      <div class="flex-between wrap mb-2">
+        <h2>Upcoming tournaments</h2>
+        <a href="tournaments.html" class="btn btn--ghost btn--sm">View all</a>
       </div>
-      <div class="grid grid--3" id="tournament-grid"></div>
+      <div class="list-row" id="tournament-list"></div>
     </div>
   </section>
 
@@ -191,9 +144,13 @@
     document.addEventListener("DOMContentLoaded", () => {
       const A = window.STRATOSPHERE;
 
-      // Game grid
-      document.getElementById("game-grid").innerHTML = A.activities.map(a => `
-        <div class="game-card card--hover reveal is-visible">
+      // Offer bar
+      document.getElementById("offer-bar").innerHTML = `<strong>${A.offer.split("—")[0].trim()}</strong> — ${A.offer.split("—")[1].trim()}`;
+
+      // Game grid (all six arenas)
+      const games = A.activities;
+      document.getElementById("game-grid").innerHTML = games.map((a, i) => `
+        <div class="game-card card--hover reveal" style="transition-delay:${i * 60}ms">
           <div class="game-card__icon">${window.ICON(a.icon)}</div>
           <h3>${a.name}</h3>
           <p>Bookable by the ${a.unit}. Members save on every session.</p>
@@ -204,44 +161,50 @@
           <a href="booking.html?activity=${a.id}" class="btn btn--ghost btn--sm btn--block mt-2">Book now</a>
         </div>`).join("");
 
-      // Quotes
-      document.getElementById("quote-grid").innerHTML = A.testimonials.map(t => `
-        <div class="card quote-card card--hover reveal is-visible">
-          <div class="stars">${"★".repeat(t.rating)}</div>
-          <p>"${t.text}"</p>
-          <div class="who">
-            <div class="avatar">${t.name[0]}</div>
-            <div><strong>${t.name}</strong><span>${t.role}</span></div>
-          </div>
+      // Why Stratosphere (ball-number badges)
+      const why = [
+        { n: "1", t: "Premium environment", d: "Moody lighting, designer tables and a lounge you'll actually want to hang in." },
+        { n: "2", t: "Curated social gaming", d: "Play your way — solo, with a squad, or matched with the community." },
+        { n: "3", t: "Community-first culture", d: "Weekly tournaments, player-finder boards and a crew that shows up." },
+        { n: "4", t: "Rewards that stack", d: "Earn points every visit. Climb from Cadet to Astronaut and unlock real perks." },
+      ];
+      document.getElementById("why-list").innerHTML = why.map((w, i) => `
+        <div class="feature-item reveal" style="transition-delay:${i * 60}ms">
+          <span class="ball-badge">${w.n}</span>
+          <div><h3>${w.t}</h3><p>${w.d}</p></div>
         </div>`).join("");
 
-      // Tiers
-      document.getElementById("tier-grid").innerHTML = A.tiers.map((t, i) => `
-        <div class="card tier-card ${i === 1 ? "tier-card--featured" : ""} reveal is-visible">
-          ${i === 1 ? '<div class="tier-card__badge">Popular</div>' : ""}
-          <span class="chip ${i === 0 ? "chip--cyan" : i === 1 ? "chip--gold" : "chip--cyan"}">${i === 0 ? "Start here" : i === 1 ? "Most popular" : "Top tier"}</span>
-          <h3 class="tier__name mt-2">${t.name}</h3>
+      // Facts (real venue details)
+      document.getElementById("fact-band").innerHTML = A.facts.map((f, i) => `
+        <div class="card fact reveal" style="transition-delay:${i * 60}ms">
+          <div class="fact__k">${f.k}</div>
+          <div class="fact__v">${f.v}</div>
+        </div>`).join("");
+
+      // Rewards scroller
+      document.getElementById("tier-scroller").innerHTML = A.tiers.map((t, i) => `
+        <div class="card tier-card ${i === 1 ? "tier-card--featured" : ""} reveal" style="transition-delay:${i * 60}ms">
+          <span class="ball-badge">${i + 1}</span>
+          <h3 class="tier__name">${t.name}</h3>
           <div class="tier__pts">${t.pts}</div>
-          <ul>${t.perks.map(p => `<li>${p}</li>`).join("")}</ul>
+          <ul>${t.perks.slice(0, 3).map(p => `<li>${p}</li>`).join("")}</ul>
+          <a href="rewards.html" class="btn btn--ghost btn--sm btn--block">Details</a>
         </div>`).join("");
 
-      // Tournaments
-      document.getElementById("tournament-grid").innerHTML = A.tournaments.slice(0, 3).map(t => `
-        <div class="card card--hover reveal is-visible">
-          <div class="flex-between">
-            <span class="chip chip--cyan">${t.game}</span>
-            ${t.featured ? '<span class="chip chip--gold">Featured</span>' : ""}
+      // Tournaments list
+      document.getElementById("tournament-list").innerHTML = A.tournaments.map((t, i) => `
+        <div class="list-item reveal" style="transition-delay:${i * 60}ms">
+          <div>
+            <div class="li-title">${t.name}</div>
+            <div class="li-meta">${t.game} · ${t.date} at ${t.time}</div>
           </div>
-          <h3 class="mt-2">${t.name}</h3>
-          <p>${t.date} · ${t.time}</p>
-          <div class="flex-between">
-            <span class="muted">Prize <strong class="gold-text">${t.prize}</strong></span>
-            <span class="muted">${t.spots} spots</span>
+          <div class="flex gap-2 wrap" style="align-items:center;">
+            <span class="chip chip--gold">${t.prize}</span>
+            <a href="tournaments.html" class="btn btn--outline btn--sm">Enter</a>
           </div>
-          <a href="tournaments.html" class="btn btn--outline btn--sm btn--block mt-2">View details</a>
         </div>`).join("");
 
-      // Quick booking -> redirect with query params
+      // Quick booking -> redirect
       document.getElementById("quick-book").addEventListener("submit", (e) => {
         e.preventDefault();
         const a = document.getElementById("qb-activity").value;
@@ -251,9 +214,9 @@
         location.href = `booking.html?activity=${a}&date=${date}&time=${time}&duration=${encodeURIComponent(dur)}`;
       });
 
-      // Default date = today
-      const d = new Date().toISOString().split("T")[0];
-      document.getElementById("qb-date").value = d;
+      document.getElementById("qb-date").value = new Date().toISOString().split("T")[0];
+
+      window.initReveal();
     });
   </script>
 </body>

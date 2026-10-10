@@ -29,17 +29,17 @@
       <!-- Filters -->
       <div class="flex wrap gap-1 mb-3" id="t-filter">
         <button class="chip chip--gold" data-g="all">All</button>
-        <button class="chip chip--cyan" data-g="Pool">Pool</button>
-        <button class="chip chip--cyan" data-g="PS5">PS5</button>
-        <button class="chip chip--cyan" data-g="Car Sim">Car Sim</button>
-        <button class="chip chip--cyan" data-g="Snooker">Snooker</button>
+        <button class="chip" data-g="Pool">Pool</button>
+        <button class="chip" data-g="PS5">PS5</button>
+        <button class="chip" data-g="Car Sim">Car Sim</button>
+        <button class="chip" data-g="Snooker">Snooker</button>
       </div>
 
       <div class="grid grid--3 mb-4" id="event-grid"></div>
 
       <div class="grid grid--2">
         <!-- Bracket -->
-        <div class="card">
+        <div class="felt felt--red felt-body">
           <h3 class="mb-2">This week's bracket</h3>
           <p class="muted" style="font-size:.85rem;">FC 25 2v2 Clash — semifinals</p>
           <div class="bracket mt-2">
@@ -47,6 +47,11 @@
             <div class="bracket-row"><div class="bracket-match"><span>Team Apex</span><span>2</span></div><div class="bracket-vs">vs</div><div class="bracket-match"><span>Team Drift</span><span class="winner">4</span></div></div>
             <div class="bracket-row"><div class="bracket-match"><span>Team Nova</span><span>2</span></div><div class="bracket-vs">vs</div><div class="bracket-match"><span class="winner">Team Drift</span><span class="winner">4</span></div></div>
           </div>
+          <div class="flex-between mt-3">
+            <span class="chip chip--gold">Final · Oct 21</span>
+            <span class="muted">Prize ₹400</span>
+          </div>
+        </div>
           <div class="flex-between mt-3">
             <span class="chip chip--gold">Final · Oct 21</span>
             <span class="muted">Prize ₹400</span>
@@ -91,9 +96,9 @@
             <h2 class="mt-2" style="font-size:2rem;">${featured.name}</h2>
             <p class="lead">${featured.game} · ${featured.date} at ${featured.time}</p>
             <div class="flex gap-2 wrap">
-              <span class="chip chip--cyan">Prize ${featured.prize}</span>
-              <span class="chip chip--cyan">${featured.spots} spots</span>
-              <span class="chip chip--cyan">Entry ${featured.fee}</span>
+              <span class="chip chip--gold">Prize ${featured.prize}</span>
+              <span class="chip">${featured.spots} spots</span>
+              <span class="chip">Entry ${featured.fee}</span>
             </div>
           </div>
           <button class="btn btn--gold btn--lg" id="featured-cta">Enter now</button>
@@ -108,7 +113,7 @@
         document.getElementById("event-grid").innerHTML = list.map(t => `
           <div class="card card--hover">
             <div class="flex-between">
-              <span class="chip chip--cyan">${t.game}</span>
+              <span class="chip">${t.game}</span>
               ${t.featured ? '<span class="chip chip--gold">Featured</span>' : ""}
             </div>
             <h3 class="mt-2">${t.name}</h3>
@@ -126,7 +131,7 @@
 
       document.getElementById("t-filter").querySelectorAll("[data-g]").forEach(btn => {
         btn.addEventListener("click", () => {
-          document.querySelectorAll("#t-filter .chip").forEach(b => b.className = "chip chip--cyan");
+          document.querySelectorAll("#t-filter .chip").forEach(b => b.className = "chip");
           btn.className = "chip chip--gold";
           renderEvents(btn.dataset.g);
         });

@@ -65,9 +65,11 @@
 
       document.getElementById("tier-grid").innerHTML = A.tiers.map((t, i) => `
         <div class="card tier-card ${i === 1 ? "tier-card--featured" : ""}">
-          ${i === 1 ? '<div class="tier-card__badge">Popular</div>' : ""}
-          <span class="chip ${i === 2 ? "chip--gold" : "chip--cyan"}">Tier ${i + 1}</span>
-          <h3 class="tier__name mt-2">${t.name}</h3>
+          <div class="flex-between">
+            <span class="ball-badge">${i + 1}</span>
+            ${i === 1 ? '<span class="chip chip--gold">Most popular</span>' : `<span class="chip">Tier ${i + 1}</span>`}
+          </div>
+          <h3 class="tier__name">${t.name}</h3>
           <div class="tier__pts">${t.pts}</div>
           <ul>${t.perks.map(p => `<li>${p}</li>`).join("")}</ul>
           <button class="btn ${i === 1 ? "btn--gold" : "btn--outline"} btn--block">${i === 1 ? "Join Pilot" : "View benefits"}</button>

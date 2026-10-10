@@ -39,7 +39,7 @@
     function renderFilters() {
       const el = document.getElementById("category-filters");
       if (!el) return;
-      el.innerHTML = `<button class="chip chip--cyan" data-f="all">All</button>` +
+      el.innerHTML = `<button class="chip" data-f="all">All</button>` +
         A.activities.map(a => `<button class="chip ${a.id === state.activity ? "chip--gold" : ""}" data-f="${a.id}">${window.ICON(a.icon, "icon")} ${a.name}</button>`).join("");
       el.querySelectorAll("[data-f]").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -122,7 +122,7 @@
         </div>
         <hr style="border-color:var(--border);margin:18px 0;">
         <div class="flex-between"><span class="muted">Total</span><span class="tier__pts" style="font-size:1.6rem;">₹${total}</span></div>
-        ${state.member ? `<p class="cyan-text" style="font-size:0.85rem;">You save ₹${savings} with member pricing</p>` : `<p style="font-size:0.82rem;">Join to save ₹${savings} on this session</p>`}
+        ${state.member ? `<p class="gold-text" style="font-size:0.85rem;">You save ₹${savings} with member pricing</p>` : `<p style="font-size:0.82rem;">Join to save ₹${savings} on this session</p>`}
         <button id="confirm-btn" class="btn btn--gold btn--block mt-2" ${state.time ? "" : "disabled style='opacity:.5;cursor:not-allowed'"}>Confirm booking</button>
         ${state.time ? "" : '<p class="center muted mt-1" style="font-size:.8rem;">Select a time slot to continue</p>'}
       `;

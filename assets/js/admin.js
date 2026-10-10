@@ -24,8 +24,8 @@
     const statusMeta = {
       free: { label: "Free", cls: "dot--available", text: "chip--green" },
       booked: { label: "Booked", cls: "dot--partial", text: "chip--amber" },
-      inuse: { label: "In use", cls: "dot--full", text: "chip--cyan" },
-      offline: { label: "Offline", cls: "", text: "chip--red" },
+      inuse: { label: "In use", cls: "dot--gold", text: "chip--gold" },
+      offline: { label: "Offline", cls: "dot--full", text: "chip--red" },
     };
 
     let floor = stations.map(s => ({ ...s }));
@@ -54,7 +54,7 @@
         <div class="floor-grid">
           ${floor.map(s => {
             const m = statusMeta[s.status];
-            const dot = s.status === "offline" ? '<span class="dot" style="background:var(--red);width:10px;height:10px;"></span>' : `<span class="dot ${m.cls}"></span>`;
+            const dot = `<span class="dot ${m.cls}"></span>`;
             return `
             <div class="card station-card">
               <div class="status">${dot}<span class="chip ${m.text}">${m.label}</span></div>

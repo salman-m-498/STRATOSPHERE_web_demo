@@ -78,7 +78,7 @@
           <div class="card">
             <h3 class="mb-2">Favorite games</h3>
             <div class="flex wrap gap-1">
-              ${[["pool", "Pool"], ["sim", "Car Sim"], ["ps5", "PS5"], ["snooker", "Snooker"]].map(g => `<span class="chip chip--cyan">${window.ICON(g[0], "icon")} ${g[1]}</span>`).join("")}
+              ${[["pool", "Pool"], ["sim", "Car Sim"], ["ps5", "PS5"], ["snooker", "Snooker"]].map(g => `<span class="chip">${window.ICON(g[0], "icon")} ${g[1]}</span>`).join("")}
             </div>
             <h3 class="mt-3 mb-2">Upcoming tournaments</h3>
             ${A.tournaments.slice(0, 2).map(t => `
