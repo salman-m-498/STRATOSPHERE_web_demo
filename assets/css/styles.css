@@ -499,6 +499,7 @@ button.chip:hover { border-color: var(--gold); }
   width: 32px; height: 32px;
   border-radius: 50%;
   display: grid; place-items: center;
+  flex: none;
   background: radial-gradient(circle at 32% 28%, #ffffff, #d9d2c0 70%);
   color: var(--blue-ink);
   font-family: var(--font-display);
@@ -883,16 +884,17 @@ input[type="date"], input[type="time"] { color-scheme: dark; }
   .fact-band { grid-template-columns: 1fr 1fr; }
   .feed-grid { columns: 1; }
   .hero { min-height: auto; }
-  .hero__content { padding: 56px 0 72px; }
-  .hero__title { font-size: clamp(2.7rem, 13.5vw, 3.5rem); line-height: 1.02; }
-  .hero__sub { font-size: 1.02rem; margin-bottom: 26px; }
-  .hero__cta { gap: 12px; margin-bottom: 26px; }
+  .hero__content { padding: 48px 0 64px; }
+  .hero__title { font-size: clamp(2.6rem, 12.5vw, 3.3rem); line-height: 1.12; }
+  .hero__sub { font-size: 1.02rem; margin-bottom: 28px; }
+  .hero__cta { gap: 12px; margin-bottom: 30px; }
   .hero__cta .btn { width: 100%; }
-  .booking-panel { margin-top: 0; }
+  .hero__chips { gap: 8px 12px; }
+  .booking-panel { margin-top: 8px; }
   .felt { border-width: 6px; }
-  .hero-book, .slot-area, .felt-body { padding: 18px; }
+  .hero-book, .slot-area, .felt-body { padding: 20px; }
   .offer-bar { font-size: 0.76rem; padding: 7px 12px; }
-  .book-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .book-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .book-grid .btn { grid-column: span 2; }
   .profile-head { flex-wrap: wrap; }
   .profile-head .btn { margin-left: 0; }
