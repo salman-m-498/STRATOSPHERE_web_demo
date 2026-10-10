@@ -54,7 +54,7 @@
       const el = document.getElementById("activity-select");
       if (!el) return;
       el.innerHTML = A.activities.map(a => `
-        <option value="${a.id}" ${a.id === state.activity ? "selected" : ""}>${a.name} — $${a.price}/hr</option>`).join("");
+        <option value="${a.id}" ${a.id === state.activity ? "selected" : ""}>${a.name} — ₹${a.price}/hr</option>`).join("");
       el.addEventListener("change", (e) => { state.activity = e.target.value; state.time = null; renderAll(); });
     }
 
@@ -78,7 +78,7 @@
         const sel = state.time === s ? " slot--selected" : "";
         const label = st === "full" ? "Full" : st === "partial" ? "Few left" : "Open";
         return `<button type="button" class="slot ${cls}${sel}" data-slot="${s}" ${st === "full" ? "disabled" : ""}>
-          ${s}<span class="slot__price">${st === "full" ? label : "$" + price}</span>
+          ${s}<span class="slot__price">${st === "full" ? label : "₹" + price}</span>
         </button>`;
       }).join("");
 
@@ -121,8 +121,8 @@
           </label>
         </div>
         <hr style="border-color:var(--border);margin:18px 0;">
-        <div class="flex-between"><span class="muted">Total</span><span class="tier__pts" style="font-size:1.6rem;">$${total}</span></div>
-        ${state.member ? `<p class="cyan-text" style="font-size:0.85rem;">You save $${savings} with member pricing</p>` : `<p style="font-size:0.82rem;">Join to save $${savings} on this session</p>`}
+        <div class="flex-between"><span class="muted">Total</span><span class="tier__pts" style="font-size:1.6rem;">₹${total}</span></div>
+        ${state.member ? `<p class="cyan-text" style="font-size:0.85rem;">You save ₹${savings} with member pricing</p>` : `<p style="font-size:0.82rem;">Join to save ₹${savings} on this session</p>`}
         <button id="confirm-btn" class="btn btn--gold btn--block mt-2" ${state.time ? "" : "disabled style='opacity:.5;cursor:not-allowed'"}>Confirm booking</button>
         ${state.time ? "" : '<p class="center muted mt-1" style="font-size:.8rem;">Select a time slot to continue</p>'}
       `;
@@ -145,7 +145,7 @@
           <div style="display:flex;justify-content:center;color:var(--green);margin-bottom:8px;">${window.ICON("check", "icon-xl")}</div>
           <h2 class="mt-2">Booking confirmed</h2>
           <p>${window.ICON(a.icon, "icon")} ${a.name} · ${state.date} at ${state.time} · ${state.duration}</p>
-          <div class="chip chip--gold mb-3">${state.member ? "Member rate" : "Guest rate"} · $${total}</div>
+          <div class="chip chip--gold mb-3">${state.member ? "Member rate" : "Guest rate"} · ₹${total}</div>
           <p class="muted">A confirmation has been sent to your email. See you in the lounge.</p>
           <div class="flex gap-2 wrap center mt-3" style="justify-content:center;">
             <a href="index.html" class="btn btn--ghost">Back home</a>

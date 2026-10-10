@@ -7,7 +7,7 @@
   <meta name="description" content="Premium social gaming lounge. Book pool tables, PS5 bays, car sims and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" type="image/png" href="media/logo-512.png">
 </head>
@@ -198,8 +198,8 @@
           <h3>${a.name}</h3>
           <p>Bookable by the ${a.unit}. Members save on every session.</p>
           <div class="game-card__price">
-            <strong>$${a.memberPrice}</strong><span>/ ${a.unit} · member</span>
-            <span style="margin-left:auto;">$${a.price} guest</span>
+            <strong>₹${a.memberPrice}</strong><span>/ ${a.unit} · member</span>
+            <span style="margin-left:auto;">₹${a.price} guest</span>
           </div>
           <a href="booking.html?activity=${a.id}" class="btn btn--ghost btn--sm btn--block mt-2">Book now</a>
         </div>`).join("");

@@ -244,6 +244,7 @@ p { margin: 0 0 1em; color: var(--text-muted); }
   text-transform: uppercase;
   color: var(--white);
   font-weight: 600;
+  line-height: 1;
 }
 .brand__logo {
   width: 40px; height: 40px;
@@ -254,6 +255,29 @@ p { margin: 0 0 1em; color: var(--text-muted); }
 }
 .brand__logo img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
 .brand__mark { color: var(--gold); }
+
+/* Metallic gold wordmark (matches logo treatment) */
+.brand__wordmark {
+  font-family: "Syncopate", "Oswald", sans-serif;
+  font-size: 0.78em;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(105deg,
+    #fbf0c4 0%,
+    #f2d790 22%,
+    #e7c76a 40%,
+    #b8903f 55%,
+    #e7c76a 68%,
+    #f2d790 84%,
+    #c9a24d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+}
 
 .main-nav { display: flex; align-items: center; gap: 6px; }
 .main-nav a {
@@ -357,6 +381,8 @@ p { margin: 0 0 1em; color: var(--text-muted); }
   font-size: 0.82rem;
   color: var(--steel-dim);
 }
+.footer-admin { color: var(--cyan); }
+.footer-admin:hover { color: var(--gold-soft); }
 
 /* ---------- Hero ---------- */
 .hero {

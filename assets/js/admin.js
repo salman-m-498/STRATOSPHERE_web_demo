@@ -46,7 +46,7 @@
 
         <div class="dash-stats mb-3">
           <div class="card dash-stat"><div class="num">18</div><div class="lbl">Bookings today</div></div>
-          <div class="card dash-stat"><div class="num">$1,240</div><div class="lbl">Revenue</div></div>
+          <div class="card dash-stat"><div class="num">₹1,240</div><div class="lbl">Revenue</div></div>
           <div class="card dash-stat"><div class="num">62%</div><div class="lbl">Occupancy</div></div>
         </div>
 

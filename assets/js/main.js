@@ -40,7 +40,7 @@ const STRATOSPHERE = {
   ],
 
   tiers: [
-    { id: "cadet", name: "Cadet", pts: "0 – 999", color: "steel", perks: ["Earn 1 point per $1", "Birthday bonus points", "Member pricing on all games", "Weekly lounge newsletter"] },
+    { id: "cadet", name: "Cadet", pts: "0 – 999", color: "steel", perks: ["Earn 1 point per ₹1", "Birthday bonus points", "Member pricing on all games", "Weekly lounge newsletter"] },
     { id: "pilot", name: "Pilot", pts: "1,000 – 4,999", color: "cyan", perks: ["Priority booking windows", "2x points on weekdays", "Free session every 10 visits", "Exclusive pilot-only events"] },
     { id: "astronaut", name: "Astronaut", pts: "5,000+", color: "gold", perks: ["Private tournament invites", "Complimentary VIP lounge access", "Personal game concierge", "4x points on everything"] },
   ],
@@ -61,10 +61,10 @@ const STRATOSPHERE = {
   ],
 
   tournaments: [
-    { name: "Friday Night 8-Ball Open", game: "Pool", date: "Oct 16", time: "7:00 PM", prize: "$500", spots: "32", fee: "$25", featured: true },
-    { name: "Gran Turismo Time Trial", game: "Car Sim", date: "Oct 18", time: "5:00 PM", prize: "$300", spots: "16", fee: "$20", featured: false },
-    { name: "FC 25 2v2 Clash", game: "PS5", date: "Oct 21", time: "6:30 PM", prize: "$400", spots: "24", fee: "$15", featured: false },
-    { name: "Snooker Sunday League", game: "Snooker", date: "Oct 25", time: "3:00 PM", prize: "$250", spots: "12", fee: "$18", featured: false },
+    { name: "Friday Night 8-Ball Open", game: "Pool", date: "Oct 16", time: "7:00 PM", prize: "₹500", spots: "32", fee: "₹25", featured: true },
+    { name: "Gran Turismo Time Trial", game: "Car Sim", date: "Oct 18", time: "5:00 PM", prize: "₹300", spots: "16", fee: "₹20", featured: false },
+    { name: "FC 25 2v2 Clash", game: "PS5", date: "Oct 21", time: "6:30 PM", prize: "₹400", spots: "24", fee: "₹15", featured: false },
+    { name: "Snooker Sunday League", game: "Snooker", date: "Oct 25", time: "3:00 PM", prize: "₹250", spots: "12", fee: "₹18", featured: false },
   ],
 };
 
@@ -98,7 +98,7 @@ function renderHeader() {
     <div class="container">
       <a class="brand" href="index.html">
         <span class="brand__logo"><img src="media/logo-512.png" alt="Stratosphere logo"></span>
-        <span>Strato<span class="brand__mark">sphere</span></span>
+        <span class="brand__wordmark">Stratosphere</span>
       </a>
       <nav class="main-nav">
         ${navLink("index.html", "Home", path === "index.html")}
@@ -146,7 +146,7 @@ function renderFooter() {
         <div class="footer-col">
           <a class="brand" href="index.html">
             <span class="brand__logo"><img src="media/logo-512.png" alt=""></span>
-            <span>Strato<span class="brand__mark">sphere</span></span>
+            <span class="brand__wordmark">Stratosphere</span>
           </a>
           <p class="footer-blurb mt-2">A premium social gaming lounge. Play harder. Connect deeper. Win bigger.</p>
           <div class="social-row">
@@ -186,7 +186,7 @@ function renderFooter() {
       </div>
       <div class="footer-bottom">
         <span>© ${new Date().getFullYear()} Stratosphere Lounge. All rights reserved.</span>
-        <span>Demo concept · Elevate beyond gaming</span>
+        <span>Demo concept · Elevate beyond gaming · <a href="admin.html" class="footer-admin">Admin (demo use only)</a></span>
       </div>
     </div>`;
 }
